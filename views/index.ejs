@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/styles.css">
+
+  <title>Record Notes</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form-container">
+            <h1>Notes</h1>
+          
+            <form action="/createNote" method="post">
+              <input type="text" name="title" id="title" placeholder="Title" autofocus>
+              <textarea name="content" placeholder="Content"></textarea>
+              <button type="submit" id="bt">Create</button>
+            </form>
+        </div>
+
+        <main>
+            <ul class="notes">
+              <% for (let i = 0; i < notes.length; i++) { %>
+                <li class="item">
+                  <h2><%= notes[i].title %></h2>
+                  <p><%= notes[i].content %></p>
+          
+                  <form action="/deleteNote" method="post">
+                    <input type="hidden" name="id" value="<%= notes[i].id %>">
+                    <button type="submit">Delete</button>
+                  </form>
+                </li>
+              <% } %>
+            </ul>
+        </main>
+    </div>
+
+  <script src="/validate.js"></script>
+</body>
+</html>

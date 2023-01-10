@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.wrapper {
+    background-color: #282c34;
+    min-height: 100vh;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    display: grid;
+    grid-template: 10rem 1fr / 1fr;
+    grid-template-areas: 
+        "header"
+        "main"
+}
+
+main {
+    grid-area: main;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.form-container {
+    border: 1px solid wheat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-area: header;
+}
+
+.notes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.item {
+    margin: 1rem;
+    width: 300px;
+    border: 1px solid gray;
+    border-radius: 7px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form > button {
+    margin: auto;
+}
