@@ -9,8 +9,7 @@ app.use(express.static("public"));
 
 
 app.get("/", async(req, res) => {
-    console.log("gettin stuff on home");
-
+    // console.log("gettin stuff on home");
     const notes = await db.getAllNotes();
 
     res.render("index", { notes });
@@ -18,11 +17,10 @@ app.get("/", async(req, res) => {
 
 
 app.post("/createNote", async (req, res) => {
-    console.log("creating note: ", req.body);
-
+    // console.log("creating note: ", req.body);
     const { title, content } = req.body;
     const addNote = await db.addNote(title, content);
-console.log("notes:: ", addNote);
+
     res.render("index", { notes: addNote });
 });
 

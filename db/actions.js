@@ -16,7 +16,7 @@ const pool = mysql
 
 // queries DB for all notes
 export async function getAllNotes() {
-  const query = "SELECT * FROM notes";
+  const query = "SELECT * FROM notes ORDER BY id DESC";
 
   const [rows] = await pool.query(query);
   return rows;
@@ -25,14 +25,11 @@ export async function getAllNotes() {
 
 // INSERT a new note into DB
 export async function addNote(title, content) {
-    console.log("adding::: ", title, content);
-  const query = "INSERT INTO notes (title, content) VALUES (?, ?)";
+    const query = "INSERT INTO notes (title, content) VALUES (?, ?)";
 
-  await pool.query(query, [title, content]);
+    await pool.query(query, [title, content]);
 
-  const querynotes = "SELECT * FROM notes";
-  const [rows] = await pool.query(querynotes);
-  return rows;
+    return await getAllNotes();
 }
 
 
@@ -42,7 +39,5 @@ export async function deleteNote(id) {
 
   await pool.query(query, [id]);
 
-  const querynotes = "SELECT * FROM notes";
-  const [rows] = await pool.query(querynotes);
-  return rows;
+  return await getAllNotes();
 }

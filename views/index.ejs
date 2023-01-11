@@ -12,29 +12,36 @@
 <body>
     <div class="wrapper">
         <div class="form-container">
-            <h1>Notes</h1>
+            <h2>Notes</h2>
           
-            <form action="/createNote" method="post">
+            <form action="/createNote" method="post" id="form-send-data">
               <input type="text" name="title" id="title" placeholder="Title" autofocus>
-              <textarea name="content" placeholder="Content"></textarea>
-              <button type="submit" id="bt">Create</button>
+              <textarea name="content" id="content" placeholder="Content" rows="3"></textarea>
+              <button type="submit" id="create-bt">Create</button>
             </form>
         </div>
 
         <main>
-            <ul class="notes">
+            <div class="notes">
               <% for (let i = 0; i < notes.length; i++) { %>
-                <li class="item">
-                  <h2><%= notes[i].title %></h2>
-                  <p><%= notes[i].content %></p>
+                <div class="item">
+                    <% const dtBase = notes[i].created; %>
+                    <% console.log("dtParsed= ", notes[i].created.toLocaleDateString()); %>
+                    <% const dtRaw = dtBase.toLocaleDateString([], { month: "short", year: "numeric", day: "numeric"}); %>
+                    <% const tmRaw = dtBase.toLocaleTimeString([], { hour12: false, hour: "2-digit", minute: "2-digit" }); %>
+                    <% const finalDt = `${dtRaw} — ${tmRaw}`; %>
+
+                    <p id="dt-format"><%= finalDt %></p>
+                    <h3><%= notes[i].title %></h3>
+                    <p><%= notes[i].content %></p>
           
-                  <form action="/deleteNote" method="post">
-                    <input type="hidden" name="id" value="<%= notes[i].id %>">
-                    <button type="submit">Delete</button>
-                  </form>
-                </li>
+                    <form action="/deleteNote" method="post">
+                        <input type="hidden" name="id" value="<%= notes[i].id %>">
+                        <button type="submit" id="delete-bt">Delete</button>
+                    </form>
+                </div>
               <% } %>
-            </ul>
+            </div>
         </main>
     </div>
 

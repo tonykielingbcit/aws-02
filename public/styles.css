@@ -10,35 +10,23 @@
     font-size: calc(10px + 2vmin);
     color: white;
     display: grid;
-    grid-template: 10rem 1fr / 1fr;
+    grid-template: 11rem 1fr / 1fr;
     grid-template-areas: 
         "header"
         "main"
 }
 
-main {
-    grid-area: main;
-    border-radius: 8px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
 .form-container {
-    border: 1px solid wheat;
+    grid-area: header;
+    border-bottom: 2px solid wheat;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    grid-area: header;
 }
 
-.notes {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
+#form-send-data {
+    width: 30%;
 }
 
 form {
@@ -46,17 +34,80 @@ form {
     flex-direction: column;
 }
 
+#title {
+    background-color: lightblue;
+    outline: 1px solid lightcyan;
+    border-radius: 5px 5px 0 0;
+    padding-left: 1rem;
+}
+
+#content {
+    background-color: lightblue;
+    outline: 1px solid lightcyan;
+    padding: 0.3rem 1rem;
+}
+
+#create-bt {
+    border-radius: 0 0 5px 5px;
+    outline: 1px solid blue;
+    border: 1px solid blue;
+    padding: 0.3rem;
+    font-weight: bold;
+    font-size: large;
+    background-color: blue;
+    font-variant: small-caps;
+}
+
+#create-bt:hover {
+    background-color: lightgreen;
+    color: blue;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+main {
+    grid-area: main;
+    border-radius: 8px;
+}
+
+.notes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
 .item {
     margin: 1rem;
     width: 300px;
     border: 1px solid gray;
     border-radius: 7px;
-    list-style-type: none;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
 }
 
-form > button {
-    margin: auto;
+#dt-format {
+    margin-top: 0.3rem;
+    font-size: smaller;
+}
+
+#delete-bt {
+    background-color: red;
+    border: 1px solid red;
+    color: orange;
+    border-radius: 7px;
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-variant: small-caps;
+    font-size: large;
+}
+
+#delete-bt:hover {
+    background-color: blueviolet;
+    border: 1px solid blueviolet;
+    color: lime;
 }
